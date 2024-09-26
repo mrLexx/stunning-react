@@ -1,5 +1,6 @@
-import { Count } from "./Count";
-import { Rating } from "./Rating";
+import { Count } from "./components/Count";
+import { Rating } from "./components/Rating";
+import { Review } from "./components/Review";
 
 export const Restaurant = ({ id, name, menu, reviews, currentNav }) => {
   return (
@@ -36,12 +37,7 @@ export const Restaurant = ({ id, name, menu, reviews, currentNav }) => {
                   {reviews.length > 0 && (
                     <ul>
                       {reviews.map((review) => (
-                        <li key={review.id}>
-                          <i>{review.user}</i> (
-                          <Rating rating={review.rating} />)
-                          <br />
-                          {review.text}
-                        </li>
+                        <Review key={review.id} user={review.user} text={review.text} rating={review.rating}/>
                       ))}
                     </ul>
                   )}
