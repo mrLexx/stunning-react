@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { Dish } from "../dish/Dish";
 import { Review } from "../review/Review";
 
 export const Restaurant = ({ name, menu, reviews }) => {
+
+useEffect(()=>{
+  console.log('useEffect');
+  return () => {
+    console.log('cleanup');
+  } 
+},[]);
+
   return (
     <>
       {name !== "" && (
