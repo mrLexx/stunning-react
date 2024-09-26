@@ -1,12 +1,11 @@
-import { Count } from "./components/Count";
-import { Rating } from "./components/Rating";
-import { Review } from "./components/Review";
+import { Dish } from "../dish/Dish";
+import { Review } from "../review/Review";
 
-export const Restaurant = ({ id, name, menu, reviews, currentNav }) => {
+export const Restaurant = ({ name, menu, reviews }) => {
   return (
     <>
       {name !== "" && (
-        <div className={`card ${id === currentNav ? "" : "d-none"}`}>
+        <div className={`card`}>
           <div className="card-body">
             <div className="row text-center">
               <div className="col">
@@ -22,9 +21,11 @@ export const Restaurant = ({ id, name, menu, reviews, currentNav }) => {
                     <ul>
                       {menu.map((dish) => (
                         <li key={dish.id}>
-                          {dish.name} ({dish.ingredients.join(", ")}) - $
-                          {dish.price}
-                          <Count currentNav={currentNav} remember={true} />
+                          <Dish
+                            name={dish.name}
+                            ingredients={dish.ingredients}
+                            price={dish.price}
+                          />
                         </li>
                       ))}
                     </ul>
@@ -37,7 +38,13 @@ export const Restaurant = ({ id, name, menu, reviews, currentNav }) => {
                   {reviews.length > 0 && (
                     <ul>
                       {reviews.map((review) => (
-                        <Review key={review.id} user={review.user} text={review.text} rating={review.rating}/>
+                        <li key={review.id}>
+                          <Review
+                            user={review.user}
+                            text={review.text}
+                            rating={review.rating}
+                          />
+                        </li>
                       ))}
                     </ul>
                   )}

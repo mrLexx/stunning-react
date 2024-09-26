@@ -1,16 +1,12 @@
-export const Nav = ({ id, name, currentNav, setCurrentNav }) => {
+export const Nav = ({ name, isActive, setActive }) => {
   return (
-    <li className="nav-item">
-      <a
-        className={`nav-link ${currentNav === id ? "active" : ""}`}
-        aria-current="page"
-        href="#"
-        onClick={() => {
-          setCurrentNav(id);
-        }}
-      >
-        {name}
-      </a>
-    </li>
+    <a
+      className={`nav-link ${isActive ? "active" : ""}`}
+      aria-current="page"
+      href="#"
+      onClick={setActive}
+    >
+      {name}
+    </a>
   );
 };

@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const Count = ({ currentNav, max = 5, remember = false }) => {
+export const Count = ({ max = 5 }) => {
   const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!remember) {
-      setCount(0);
-    }
-  }, [currentNav, remember]);
 
   return (
     <div className="d-grid gap-2 d-md-block">
