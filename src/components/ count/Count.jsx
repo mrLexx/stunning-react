@@ -19,7 +19,8 @@ export const Count = ({ max = 5 }) => {
       >
         {" "}
         -{" "}
-      </button>{" "}
+      </button>
+      {" "}
       {count}{" "}
       <button
         type="button"
