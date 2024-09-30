@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
-import ScrollProgress from "scrollprogress";
-import "./progress-bar.css"
+
+const defaultStyle = {
+    backgroundColor: '#DC2626',
+    top: 0,
+    position: 'fixed',
+    height: '10px',
+    left: 0,
+    zIndex: 9999,
+};
 
 export const ProgressBar = ({ style }) => {
     const [progress, setProgress] = useState('0%');
 
     useEffect(() => {
-        const progressObserver = new ScrollProgress((x, y) => {
-            setProgress(y * 100 + '%');
-        });
-        return () => {
-            progressObserver.destroy();
+        const handleProgress = () => {
+            setProgress(Math.floor((window.scrollY * 100 / (document.body.scrollHeight - window.innerHeight))) + '%');
         };
+
+        window.addEventListener('scroll', handleProgress);
+
+        return () => {
+            window.removeEventListener('scroll', handleProgress);
+        };
+
+
     }, []);
 
     return (<>
-        <div className={"progress-bar"} style={{
-            ...style,
-            width: progress,
-        }}></div>
+        <div>
+            <div style={{
+                ...defaultStyle,
+                ...style,
+                width: progress,
+            }}></div>
+        </div>
     </>);
 }
