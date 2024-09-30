@@ -1,7 +1,6 @@
 import { Dish } from "../dish/Dish";
 import { Review } from "../review/Review";
-import { Fragment, useEffect, useState } from "react";
-import { ProgressBar } from "../progress-bar/progress-bar.jsx";
+import { Fragment } from "react";
 
 export const Restaurant = ({ name, menu, reviews }) => {
 
@@ -9,8 +8,6 @@ export const Restaurant = ({ name, menu, reviews }) => {
         <>
             {name !== "" && (
                 <>
-                    <ProgressBar style={{ backgroundColor: "#0d6efd" }}/>
-
                     <div className={`card`}>
                         <div className="card-body">
                             <div className="row text-center">

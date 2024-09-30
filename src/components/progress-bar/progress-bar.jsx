@@ -11,7 +11,7 @@ export const ProgressBar = ({ style }) => {
         });
         return () => {
             progressObserver.destroy();
-        }
+        };
     }, []);
 
     return (<>
