@@ -1,8 +1,10 @@
 import { Dish } from "../dish/Dish";
 import { Review } from "../review/Review";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import { ReviewForm } from "../review-form/ReviewForm.jsx";
 
 export const Restaurant = ({ name, menu, reviews }) => {
+    const [moreDishes, setMoreDishes] = useState(false);
 
     return (
         <>
@@ -19,10 +21,18 @@ export const Restaurant = ({ name, menu, reviews }) => {
                             <div className="row">
                                 <div className="col">
                                     <div className="card-text">
+
                                         <h4>Menu</h4>
+                                        <button
+                                            className={"btn btn-outline-primary btn-sm mb-2"}
+                                            onClick={() => setMoreDishes(!moreDishes)}
+                                        >{moreDishes ? `Remove extra dishes` : `Add more dishes for progreess bar`}
+                                        </button>
+
                                         {menu.length > 0 && (
+
                                             <ul>
-                                                {[...Array(10)].map((x, i) => {
+                                                {moreDishes ? [...Array(10)].map((x, i) => {
                                                     return <Fragment key={i}>
                                                         {menu.map((dish) => (
                                                             <li key={dish.id}>
@@ -34,16 +44,15 @@ export const Restaurant = ({ name, menu, reviews }) => {
                                                             </li>
                                                         ))}
                                                     </Fragment>
-                                                })}
-                                                {/*{menu.map((dish) => (
-                                                <li key={dish.id}>
-                                                    <Dish
-                                                        name={dish.name}
-                                                        ingredients={dish.ingredients}
-                                                        price={dish.price}
-                                                    />
-                                                </li>
-                                            ))}*/}
+                                                }) : menu.map((dish) => (
+                                                    <li key={dish.id}>
+                                                        <Dish
+                                                            name={dish.name}
+                                                            ingredients={dish.ingredients}
+                                                            price={dish.price}
+                                                        />
+                                                    </li>
+                                                ))}
                                             </ul>
                                         )}
                                     </div>
@@ -64,6 +73,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
                                                 ))}
                                             </ul>
                                         )}
+                                        <ReviewForm/>
                                     </div>
                                 </div>
                             </div>

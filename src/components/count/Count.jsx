@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useCount } from "./use-count.js";
 
-export const Count = ({ max = 5 }) => {
-    const [count, setCount] = useState(0);
+export const Count = ( {
+                              count,
+                              increment,
+                              decrement,
+                              limitReached,
+                          }) => {
 
     return (
         <div className="d-grid gap-2 d-md-block">
@@ -13,9 +17,7 @@ export const Count = ({ max = 5 }) => {
                     "--bs-btn-font-size": "1rem",
                 }}
                 className="btn btn-light btn-sm"
-                onClick={() => {
-                    setCount(count > 0 ? count - 1 : 0);
-                }}
+                onClick={() => decrement()}
             >
                 {" "}
                 -{" "}
@@ -30,10 +32,8 @@ export const Count = ({ max = 5 }) => {
                     "--bs-btn-font-size": "1rem",
                 }}
                 className={`btn btn-light btn-sm`}
-                onClick={() => {
-                    setCount(count < max ? count + 1 : count);
-                }}
-                disabled={!(count < max)}
+                onClick={() => increment()}
+                disabled={limitReached}
             >
                 {" "}
                 +{" "}
