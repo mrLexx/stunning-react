@@ -38,7 +38,6 @@ export const ReviewForm = () => {
                     count={rating}
                     increment={ratingIncrement}
                     decrement={ratingDecrement}
-                    limitReached={false}
                 />
             </div>
             <button type="button" className="btn btn-primary me-4">Submit</button>

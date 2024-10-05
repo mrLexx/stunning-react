@@ -1,5 +1,4 @@
 import { useReducer } from "react";
-import { useCount } from "../count/use-count.js";
 
 const DEFAULT_FORM_VALUE = {
     name: '',
@@ -17,7 +16,7 @@ const reducer = (state, action) => {
     switch (type) {
         case FORM_ACTION_SET_NAME:
             return {
-                ...state,
+                ...DEFAULT_FORM_VALUE,
                 name: payload,
             };
         case FORM_ACTION_SET_REVIEW:
@@ -37,20 +36,14 @@ const reducer = (state, action) => {
     throw Error('Unknown action: ' + action.type);
 }
 
+const MAX_RATING = 5;
+
 export const useReviewForms = () => {
     const [state, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
-
-    const {
-        increment,
-        decrement,
-        resetTo,
-    } = useCount(5);
-
 
     const { name, review, rating } = state;
 
     const setName = (value) => {
-        clearForm();
         dispatch({ type: FORM_ACTION_SET_NAME, payload: value });
     }
     const setReview = (value) => {
@@ -58,14 +51,15 @@ export const useReviewForms = () => {
     }
 
     const ratingIncrement = () => {
-        dispatch({ type: FORM_ACTION_SET_RATING, payload: increment() });
+        const payload = (rating < MAX_RATING || MAX_RATING === -1) ? rating + 1 : rating;
+        dispatch({ type: FORM_ACTION_SET_RATING, payload: payload });
     }
     const ratingDecrement = () => {
-        dispatch({ type: FORM_ACTION_SET_RATING, payload: decrement() });
+        const payload = rating > 0 ? rating - 1 : 0;
+        dispatch({ type: FORM_ACTION_SET_RATING, payload: payload });
     }
 
     const clearForm = () => {
-        resetTo(0);
         dispatch({ type: FORM_ACTION_CLEAR });
     }
 
@@ -75,8 +69,10 @@ export const useReviewForms = () => {
         rating,
         setName,
         setReview,
+
         ratingIncrement,
         ratingDecrement,
+
         clearForm
     };
 

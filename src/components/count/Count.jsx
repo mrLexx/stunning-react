@@ -1,11 +1,11 @@
 import { useCount } from "./use-count.js";
 
-export const Count = ( {
-                              count,
-                              increment,
-                              decrement,
-                              limitReached,
-                          }) => {
+export const Count = ({
+                          count,
+                          increment,
+                          decrement,
+                          limitReached=false,
+                      }) => {
 
     return (
         <div className="d-grid gap-2 d-md-block">
@@ -17,7 +17,7 @@ export const Count = ( {
                     "--bs-btn-font-size": "1rem",
                 }}
                 className="btn btn-light btn-sm"
-                onClick={() => decrement()}
+                onClick={decrement}
             >
                 {" "}
                 -{" "}
@@ -32,7 +32,7 @@ export const Count = ( {
                     "--bs-btn-font-size": "1rem",
                 }}
                 className={`btn btn-light btn-sm`}
-                onClick={() => increment()}
+                onClick={increment}
                 disabled={limitReached}
             >
                 {" "}

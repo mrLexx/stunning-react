@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const useCount = ( max = -1) => {
+export const useCount = (max = -1) => {
 
     const [count, setCount] = useState(0);
-    const [limitReached, setLimitReached] = useState(false);
 
     const increment = () => {
         const value = (count < max || max === -1) ? count + 1 : count;
@@ -15,14 +14,6 @@ export const useCount = ( max = -1) => {
         setCount(count > 0 ? count - 1 : 0)
         return value;
     }
-
-    useEffect(() => {
-        if (max > 0 && !(count < max)) {
-            setLimitReached(true);
-        } else {
-            setLimitReached(false);
-        }
-    }, [count])
 
     const resetTo = (value) => {
         if (max > 0 && value > max) {
@@ -39,7 +30,7 @@ export const useCount = ( max = -1) => {
         count,
         increment,
         decrement,
-        limitReached,
+        limitReached: (max > 0 && !(count < max)),
         resetTo
     };
 }
