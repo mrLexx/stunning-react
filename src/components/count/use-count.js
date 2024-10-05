@@ -6,31 +6,31 @@ export const useCount = (max = -1) => {
 
     const increment = () => {
         const value = (count < max || max === -1) ? count + 1 : count;
-        setCount((count < max || max === -1) ? count + 1 : count);
-        return value;
+        setCount(value);
     }
     const decrement = () => {
         const value = count > 0 ? count - 1 : 0;
-        setCount(count > 0 ? count - 1 : 0)
-        return value;
+        setCount(value)
     }
 
     const resetTo = (value) => {
-        if (max > 0 && value > max) {
-            value = max;
-        }
-        if (value < 0) {
-            value = 0;
-        }
 
-        setCount(value);
+        if (value < 0) {
+            setCount(0);
+        } else if (max > 0 && value > max) {
+            setCount(max);
+        } else {
+            setCount(value);
+        }
     }
+
+    const limitReached = (max > 0 && !(count < max));
 
     return {
         count,
         increment,
         decrement,
-        limitReached: (max > 0 && !(count < max)),
+        limitReached,
         resetTo
     };
 }
