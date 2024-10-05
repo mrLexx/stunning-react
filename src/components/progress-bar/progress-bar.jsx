@@ -1,38 +1,44 @@
-import { useEffect, useState } from "react";
+import styles from "./progress-bar.module.css"
+import { useProgressBar } from "./use-progress-bar.js";
+import classNames from "classnames";
 
-const defaultStyle = {
-    backgroundColor: '#DC2626',
-    top: 0,
-    position: 'fixed',
-    height: '10px',
-    left: 0,
-    zIndex: 9999,
-};
+export const ProgressBar = ({ viewMode="default", size="usual" }) => {
+    const { progress } = useProgressBar();
 
-export const ProgressBar = ({ style }) => {
-    const [progress, setProgress] = useState('0%');
+    const progressBarClass = [];
 
-    useEffect(() => {
-        const handleProgress = () => {
-            setProgress(Math.floor((window.scrollY * 100 / (document.body.scrollHeight - window.innerHeight))) + '%');
-        };
-
-        window.addEventListener('scroll', handleProgress);
-
-        return () => {
-            window.removeEventListener('scroll', handleProgress);
-        };
-
-
-    }, []);
+    switch (viewMode) {
+        case 'accent':
+            progressBarClass.push(styles.accent);
+            break
+        case 'default':
+        default:
+            progressBarClass.push(styles.default);
+            break
+    }
+    switch (size) {
+        case 'small':
+            progressBarClass.push(styles.sizeSmall);
+            break;
+        case 'big':
+            progressBarClass.push(styles.sizeBig);
+            break;
+        case 'usual':
+        default:
+            progressBarClass.push(styles.sizeUsual);
+            break;
+    }
 
     return (<>
         <div>
-            <div style={{
-                ...defaultStyle,
-                ...style,
-                width: progress,
-            }}></div>
+            <div
+                className={classNames(
+                    styles.progressBar,
+                    progressBarClass
+                )}
+                style={{
+                    width: progress,
+                }}></div>
         </div>
     </>);
 }

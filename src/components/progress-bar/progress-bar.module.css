@@ -1,0 +1,26 @@
+.progressBar {
+    top: 0;
+    position: fixed;
+    left: 0;
+    z-index: 9999;
+}
+
+.default {
+    background-color: #0d6efd;
+}
+
+.accent {
+    background-color: #DC2626;
+}
+
+.sizeSmall {
+    height: 2px;
+}
+
+.sizeUsual {
+    height: 7px;
+}
+
+.sizeBig {
+    height: 10px;
+}
