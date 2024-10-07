@@ -1,0 +1,23 @@
+.restaurant {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.restaurant > * {
+    padding: 7px;
+    margin: 1px;
+}
+
+.title{
+    text-align: right;
+    margin-right: 30%;
+}
+
+.menu{
+    padding-left: 20px;
+}
+
+.subTitle{
+    margin-left: 50px;
+    text-align: left;
+}

@@ -1,0 +1,36 @@
+.review {
+    margin-bottom: 10px;
+
+}
+
+.user {
+    font-style: italic;
+
+}
+
+.rating {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em;
+}
+
+.bad{
+    fill:indianred;
+}
+.notBad{
+    fill:greenyellow;
+
+}
+.excellent{
+    fill:yellowgreen;
+
+}
+
+.text {
+    padding-left: 5px;
+    margin-left: 10px;
+    border-left: 2px solid #000000;
+
+}

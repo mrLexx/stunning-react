@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { restaurants } from "../../materials/mock";
-import { Nav } from "../nav/Nav";
 import { Restaurant } from "../restaurant/Restaurant";
 import { RestaurantsTabs } from "../restaurants-tabs/RestaurantsTabs.jsx";
+import styles from "./restaurants-page.module.css"
+import classNames from "classnames";
+
 
 export const RestaurantsPage = () => {
 
@@ -16,23 +18,27 @@ export const RestaurantsPage = () => {
 
     return (
         <>
-            <div className={"container text-center pb-3 pt-3"}><h1>Restaurants</h1></div>
-            <div className={"container"}>
-                <RestaurantsTabs
-                    restaurants={restaurants}
-                    activeRestaurantId={activeRestaurantId}
-                    setActiveRestaurantId={setActiveRestaurantId}
-                />
-
-                {activeRestaurant && (
-                    <Restaurant
-                        key={activeRestaurant.id}
-                        name={activeRestaurant.name}
-                        menu={activeRestaurant.menu}
-                        reviews={activeRestaurant.reviews}
+            <div>
+                <div className={classNames(styles.title)}>
+                    <h1>Restaurants</h1>
+                </div>
+                <div className={classNames(styles.nav)}>
+                    <RestaurantsTabs
+                        restaurants={restaurants}
+                        activeRestaurantId={activeRestaurantId}
+                        setActiveRestaurantId={setActiveRestaurantId}
                     />
-                )}
+                </div>
             </div>
+
+            {activeRestaurant && (
+                <Restaurant
+                    key={activeRestaurant.id}
+                    name={activeRestaurant.name}
+                    menu={activeRestaurant.menu}
+                    reviews={activeRestaurant.reviews}
+                />
+            )}
         </>
     );
 };

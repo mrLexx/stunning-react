@@ -1,6 +1,9 @@
 import { useReviewForms } from "./use-review-forms.js";
 import { Count } from "../count/Count.jsx";
 import { useId } from "react";
+import { Button } from "../button/Button.jsx";
+import styles from "./review-form.module.css"
+import classNames from "classnames";
 
 export const ReviewForm = () => {
 
@@ -11,39 +14,48 @@ export const ReviewForm = () => {
 
     return (
         <form>
-            <h5>Add review</h5>
-            <div className="mb-3">
-                <label htmlFor={nameId} className="form-label">Name</label>
+            <h5 className={classNames(styles.title)}>Add review</h5>
+            <div>
+                <label className={classNames(styles.label)} htmlFor={nameId}>Name</label>
                 <input
                     id={nameId}
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     type="text"
-                    className="form-control"
+
                 />
             </div>
-            <div className="mb-3">
-                <label htmlFor={reviewId} className="form-label">Review</label>
+            <div>
+                <label className={classNames(styles.label)} htmlFor={reviewId}>Review</label>
                 <input
                     id={reviewId}
                     value={review}
                     onChange={(event) => setReview(event.target.value)}
                     type="text"
-                    className="form-control"
+
                 />
             </div>
-            <div className="mb-3">
-                <label className="form-label">Rating</label>
+            <div>
+                <label className={classNames(styles.label)}>Rating</label>
                 <Count
                     count={rating}
                     increment={ratingIncrement}
                     decrement={ratingDecrement}
                 />
             </div>
-            <button type="button" className="btn btn-primary me-4">Submit</button>
-            <button type="button" className="btn btn-secondary" onClick={() => {
-                clearForm();
-            }}>Clear</button>
+            <div className={classNames(styles.action)}>
+                <Button
+                    text={"Submit"}
+                    size={"medium"}
+                />
+                <Button
+                    text={"Clear"}
+                    onClick={() => {
+                        clearForm();
+                    }}
+                    size={"medium"}
+                />
+            </div>
         </form>
     );
 

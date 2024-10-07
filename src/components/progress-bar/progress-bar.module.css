@@ -1,4 +1,6 @@
 .progressBar {
+    height: 7px;
+    background-color: #0d6efd;
     top: 0;
     position: fixed;
     left: 0;
@@ -13,14 +15,14 @@
     background-color: #DC2626;
 }
 
-.sizeSmall {
+.small {
     height: 2px;
 }
 
-.sizeUsual {
+.medium {
     height: 7px;
 }
 
-.sizeBig {
+.big {
     height: 10px;
 }

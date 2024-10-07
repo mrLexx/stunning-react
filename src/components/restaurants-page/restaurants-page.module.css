@@ -1,0 +1,8 @@
+.title, .nav {
+    text-align: center !important;
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+.nav > * {
+    margin-right: 15px;
+}
