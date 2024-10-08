@@ -1,7 +1,6 @@
 import { Count } from "../count/Count.jsx";
 import { useCount } from "../count/use-count.js";
 import styles from "./dish.module.css"
-import classNames from "classnames";
 
 const max = 7;
 export const Dish = ({ name, ingredients, price }) => {
@@ -14,8 +13,8 @@ export const Dish = ({ name, ingredients, price }) => {
 
     return (
         <>
-            {name} ({ingredients.join(", ")}) - <span className={classNames(styles.price)}>{price}</span>
-            <div className={classNames(styles.count)}>
+            {name} ({ingredients.join(", ")}) - <span className={styles.price}>{price}</span>
+            <div className={styles.count}>
                 <Count
                     count={count}
                     increment={increment}

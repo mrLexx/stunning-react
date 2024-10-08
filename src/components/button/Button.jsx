@@ -12,9 +12,11 @@ export const Button = ({ text, disabled, onClick, size, className }) => {
                 classNames(
                     className,
                     styles.button,
-                    { [styles.small]: size === 'small' },
-                    { [styles.medium]: size === 'medium' },
-                    { [styles.big]: size === 'big' },
+                    {
+                        [styles.small]: size === 'small',
+                        [styles.medium]: size === 'medium',
+                        [styles.big]: size === 'big'
+                    }
                 )
             }
         >

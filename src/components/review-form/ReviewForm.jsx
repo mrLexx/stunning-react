@@ -3,7 +3,6 @@ import { Count } from "../count/Count.jsx";
 import { useId } from "react";
 import { Button } from "../button/Button.jsx";
 import styles from "./review-form.module.css"
-import classNames from "classnames";
 
 export const ReviewForm = () => {
 
@@ -14,9 +13,9 @@ export const ReviewForm = () => {
 
     return (
         <form>
-            <h5 className={classNames(styles.title)}>Add review</h5>
+            <h5 className={styles.label}>Add review</h5>
             <div>
-                <label className={classNames(styles.label)} htmlFor={nameId}>Name</label>
+                <label className={styles.label} htmlFor={nameId}>Name</label>
                 <input
                     id={nameId}
                     value={name}
@@ -26,7 +25,7 @@ export const ReviewForm = () => {
                 />
             </div>
             <div>
-                <label className={classNames(styles.label)} htmlFor={reviewId}>Review</label>
+                <label className={styles.label} htmlFor={reviewId}>Review</label>
                 <input
                     id={reviewId}
                     value={review}
@@ -36,14 +35,14 @@ export const ReviewForm = () => {
                 />
             </div>
             <div>
-                <label className={classNames(styles.label)}>Rating</label>
+                <label className={styles.label}>Rating</label>
                 <Count
                     count={rating}
                     increment={ratingIncrement}
                     decrement={ratingDecrement}
                 />
             </div>
-            <div className={classNames(styles.action)}>
+            <div className={styles.action}>
                 <Button
                     text={"Submit"}
                     size={"medium"}

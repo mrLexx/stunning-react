@@ -5,8 +5,8 @@ import classNames from "classnames";
 
 export const Review = ({ user, text, rating }) => {
     return (
-        <div className={classNames(styles.review)}>
-            <div><span className={classNames(styles.user)}>{user}</span>
+        <div className={styles.review}>
+            <div><span className={styles.user}>{user}</span>
                 <span
                 className={classNames(
                     styles.rating,
@@ -15,7 +15,7 @@ export const Review = ({ user, text, rating }) => {
                     { [styles.excellent]: rating >3 },
                 )}
             ><Rating rating={rating}/></span></div>
-            <div className={classNames(styles.text)}>{text}</div>
+            <div className={styles.text}>{text}</div>
         </div>
     );
 };

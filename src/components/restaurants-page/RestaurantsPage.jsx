@@ -3,8 +3,6 @@ import { restaurants } from "../../materials/mock";
 import { Restaurant } from "../restaurant/Restaurant";
 import { RestaurantsTabs } from "../restaurants-tabs/RestaurantsTabs.jsx";
 import styles from "./restaurants-page.module.css"
-import classNames from "classnames";
-
 
 export const RestaurantsPage = () => {
 
@@ -19,10 +17,10 @@ export const RestaurantsPage = () => {
     return (
         <>
             <div>
-                <div className={classNames(styles.title)}>
+                <div className={styles.title}>
                     <h1>Restaurants</h1>
                 </div>
-                <div className={classNames(styles.nav)}>
+                <div className={styles.nav}>
                     <RestaurantsTabs
                         restaurants={restaurants}
                         activeRestaurantId={activeRestaurantId}
