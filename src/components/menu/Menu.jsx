@@ -1,4 +1,4 @@
-import { Dish } from "../dish/Dish.jsx";
+import { Dish } from "../dish/dish.jsx";
 import styles from "./menu.module.css"
 
 export const Menu = ({ menu }) => {
