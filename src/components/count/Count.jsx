@@ -1,4 +1,4 @@
-import { Button } from "../button/Button.jsx";
+import { Button } from "../button/button.jsx";
 
 export const Count = ({
                           count,

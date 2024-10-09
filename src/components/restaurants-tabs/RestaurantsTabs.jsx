@@ -1,4 +1,4 @@
-import { Button } from "../button/Button.jsx";
+import { Button } from "../button/button.jsx";
 import styles from "./restaurants-tabs.module.css"
 
 export const RestaurantsTabs = ({ restaurants, activeRestaurantId, setActiveRestaurantId }) => {
