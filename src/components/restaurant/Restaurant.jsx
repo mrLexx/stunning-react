@@ -1,5 +1,5 @@
 import { ReviewForm } from "../review-form/ReviewForm.jsx";
-import { Menu } from "../menu/Menu.jsx";
+import { Menu } from "../menu/menu.jsx";
 import { Reviews } from "../reviews/Reviews.jsx";
 import styles from "./restaurant.module.css"
 
