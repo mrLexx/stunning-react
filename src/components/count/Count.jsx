@@ -1,43 +1,25 @@
-import { useCount } from "./use-count.js";
+import { Button } from "../button/Button.jsx";
 
 export const Count = ({
                           count,
                           increment,
                           decrement,
-                          limitReached=false,
+                          limitReached = false,
                       }) => {
 
     return (
-        <div className="d-grid gap-2 d-md-block">
-            <button
-                type="button"
-                style={{
-                    "--bs-btn-padding-y": ".25rem",
-                    "--bs-btn-padding-x": ".5rem",
-                    "--bs-btn-font-size": "1rem",
-                }}
-                className="btn btn-light btn-sm"
+        <>
+            <Button
                 onClick={decrement}
-            >
-                {" "}
-                -{" "}
-            </button>
-            {" "}
-            {count}{" "}
-            <button
-                type="button"
-                style={{
-                    "--bs-btn-padding-y": ".25rem",
-                    "--bs-btn-padding-x": ".5rem",
-                    "--bs-btn-font-size": "1rem",
-                }}
-                className={`btn btn-light btn-sm`}
+                text={" - "}
+                size={"small"}
+            />{` ${count} `}
+            <Button
                 onClick={increment}
+                text={" + "}
                 disabled={limitReached}
-            >
-                {" "}
-                +{" "}
-            </button>
-        </div>
+                size={"small"}
+            />
+        </>
     );
 };

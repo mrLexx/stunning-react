@@ -1,5 +1,5 @@
-import { Fragment, useState } from "react";
 import { Dish } from "../dish/Dish.jsx";
+import styles from "./menu.module.css"
 
 export const Menu = ({ menu }) => {
 
@@ -8,9 +8,9 @@ export const Menu = ({ menu }) => {
     }
 
     return (
-        <ul>
+        <ul className={styles.menu}>
             {menu.map((dish) => (
-                <li key={dish.id}>
+                <li key={dish.id} className={styles.dish}>
                     <Dish
                         name={dish.name}
                         ingredients={dish.ingredients}
