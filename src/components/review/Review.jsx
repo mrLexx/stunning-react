@@ -1,4 +1,4 @@
-import { Rating } from "../rating/Rating";
+import { Rating } from "../rating/rating.jsx";
 import styles from "./review.module.css"
 import classNames from "classnames";
 
