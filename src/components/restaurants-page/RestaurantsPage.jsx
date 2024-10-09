@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { restaurants } from "../../materials/mock";
-import { Restaurant } from "../restaurant/Restaurant";
+import { Restaurant } from "../restaurant/restaurant.jsx";
 import { RestaurantsTabs } from "../restaurants-tabs/RestaurantsTabs.jsx";
 import styles from "./restaurants-page.module.css"
 
