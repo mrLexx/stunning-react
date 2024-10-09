@@ -1,4 +1,4 @@
-import { Review } from "../review/Review.jsx";
+import { Review } from "../review/review.jsx";
 import styles from "./reviews.module.css"
 
 export const Reviews = ({reviews}) => {
