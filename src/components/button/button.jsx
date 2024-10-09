@@ -1,4 +1,4 @@
-import styles from "./Button.module.css"
+import styles from "./button.module.css"
 import classNames from "classnames";
 
 export const Button = ({ text, disabled, onClick, size, className }) => {
