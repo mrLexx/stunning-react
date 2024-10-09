@@ -16,4 +16,14 @@
     font-size: 19pt;
 }
 
+.light {
+    color: black;
+    background-color: white;
+}
+
+.dark {
+    color: white;
+    background-color: black;
+}
+
 

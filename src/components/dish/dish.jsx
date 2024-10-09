@@ -1,6 +1,7 @@
 import { Count } from "../count/count.jsx";
 import { useCount } from "../count/use-count.js";
 import styles from "./dish.module.css"
+import { useAuth } from "../auth-context/use-auth.js";
 
 const max = 7;
 export const Dish = ({ name, ingredients, price }) => {
@@ -11,17 +12,17 @@ export const Dish = ({ name, ingredients, price }) => {
         limitReached
     } = useCount(max);
 
+    const { user } = useAuth();
+
     return (
         <>
             {name} ({ingredients.join(", ")}) - <span className={styles.price}>{price}</span>
-            <div className={styles.count}>
-                <Count
-                    count={count}
-                    increment={increment}
-                    decrement={decrement}
-                    limitReached={limitReached}
-                />
-            </div>
+            {user.auth && <div className={styles.count}><Count
+                count={count}
+                increment={increment}
+                decrement={decrement}
+                limitReached={limitReached}
+            /></div>}
         </>
     );
 };
