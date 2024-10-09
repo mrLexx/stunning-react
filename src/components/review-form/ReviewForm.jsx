@@ -1,5 +1,5 @@
 import { useReviewForms } from "./use-review-forms.js";
-import { Count } from "../count/Count.jsx";
+import { Count } from "../count/count.jsx";
 import { useId } from "react";
 import { Button } from "../button/button.jsx";
 import styles from "./review-form.module.css"

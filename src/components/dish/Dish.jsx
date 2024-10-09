@@ -1,4 +1,4 @@
-import { Count } from "../count/Count.jsx";
+import { Count } from "../count/count.jsx";
 import { useCount } from "../count/use-count.js";
 import styles from "./dish.module.css"
 
