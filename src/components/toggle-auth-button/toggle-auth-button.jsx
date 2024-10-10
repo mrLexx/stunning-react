@@ -5,18 +5,12 @@ import styles from "./toggle-auth-button.module.css";
 export const ToggleAuthButton = () => {
     const { user, toggleLogin } = useAuth();
 
-    return (
-        user.auth
-            ? <>{user.name} <Button
-                text={'Logout'}
+    return (<>{user.auth && user.name}
+            <Button
+                text={user.auth ? 'Logout' : 'Login'}
                 onClick={toggleLogin}
                 className={styles.toggleButton}
             />
-            </>
-            : <Button
-                text={'Login'}
-                onClick={toggleLogin}
-                className={styles.toggleButton}
-            />
+        </>
     )
 }
