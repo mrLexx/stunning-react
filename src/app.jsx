@@ -4,12 +4,11 @@ import { ThemeContextProvider } from "./components/theme-context/theme-context-p
 import { AuthContextProvider } from "./components/auth-context/auth-context-provider.jsx";
 
 export const App = () => {
-
     return (
         <AuthContextProvider>
             <ThemeContextProvider>
                 <Layout>
-                    <RestaurantsPage/>
+                    <RestaurantsPage />
                 </Layout>
             </ThemeContextProvider>
         </AuthContextProvider>

@@ -1,11 +1,9 @@
 .review {
     margin-bottom: 10px;
-
 }
 
 .user {
     font-style: italic;
-
 }
 
 .rating {
@@ -16,21 +14,18 @@
     top: -0.5em;
 }
 
-.bad{
-    fill:indianred;
+.bad {
+    fill: indianred;
 }
-.notBad{
-    fill:greenyellow;
-
+.notBad {
+    fill: greenyellow;
 }
-.excellent{
-    fill:yellowgreen;
-
+.excellent {
+    fill: yellowgreen;
 }
 
 .text {
     padding-left: 5px;
     margin-left: 10px;
     border-left: 2px solid #000000;
-
 }

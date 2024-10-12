@@ -1,15 +1,15 @@
 import { useReducer } from "react";
 
 const DEFAULT_FORM_VALUE = {
-    name: '',
-    review: '',
+    name: "",
+    review: "",
     rating: 0,
-}
+};
 
-const FORM_ACTION_SET_NAME = 'setName';
-const FORM_ACTION_SET_REVIEW = 'setReview';
-const FORM_ACTION_SET_RATING = 'setRating';
-const FORM_ACTION_CLEAR = 'setClear';
+const FORM_ACTION_SET_NAME = "setName";
+const FORM_ACTION_SET_REVIEW = "setReview";
+const FORM_ACTION_SET_RATING = "setRating";
+const FORM_ACTION_CLEAR = "setClear";
 
 const reducer = (state, action) => {
     const { type, payload } = action;
@@ -31,10 +31,9 @@ const reducer = (state, action) => {
             };
         case FORM_ACTION_CLEAR:
             return DEFAULT_FORM_VALUE;
-
     }
-    throw Error('Unknown action: ' + action.type);
-}
+    throw Error("Unknown action: " + action.type);
+};
 
 const MAX_RATING = 5;
 
@@ -45,23 +44,23 @@ export const useReviewForms = () => {
 
     const setName = (value) => {
         dispatch({ type: FORM_ACTION_SET_NAME, payload: value });
-    }
+    };
     const setReview = (value) => {
         dispatch({ type: FORM_ACTION_SET_REVIEW, payload: value });
-    }
+    };
 
     const ratingIncrement = () => {
-        const payload = (rating < MAX_RATING || MAX_RATING === -1) ? rating + 1 : rating;
+        const payload = rating < MAX_RATING || MAX_RATING === -1 ? rating + 1 : rating;
         dispatch({ type: FORM_ACTION_SET_RATING, payload: payload });
-    }
+    };
     const ratingDecrement = () => {
         const payload = rating > 0 ? rating - 1 : 0;
         dispatch({ type: FORM_ACTION_SET_RATING, payload: payload });
-    }
+    };
 
     const clearForm = () => {
         dispatch({ type: FORM_ACTION_CLEAR });
-    }
+    };
 
     return {
         name,
@@ -73,8 +72,6 @@ export const useReviewForms = () => {
         ratingIncrement,
         ratingDecrement,
 
-        clearForm
+        clearForm,
     };
-
-
-}
+};

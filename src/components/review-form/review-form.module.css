@@ -1,16 +1,16 @@
-.title{
+.title {
     margin-left: 50px;
 }
-.label{
+.label {
     margin-right: 5px;
 }
 .label:after {
-    content: ':';
+    content: ":";
 }
 
-.action{
-    margin-top:15px;
+.action {
+    margin-top: 15px;
 }
-.action button{
-    margin-right:5px;
+.action button {
+    margin-right: 5px;
 }

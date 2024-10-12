@@ -1,18 +1,16 @@
 import { Review } from "../review/review.jsx";
-import styles from "./reviews.module.css"
+import styles from "./reviews.module.css";
 
-export const Reviews = ({reviews}) => {
-    return reviews.length > 0 && (
+export const Reviews = ({ reviews }) => {
+    return (
+        reviews.length > 0 && (
             <ul className={styles.reviews}>
                 {reviews.map((review) => (
-                    <li key={review.id} >
-                        <Review
-                            user={review.user}
-                            text={review.text}
-                            rating={review.rating}
-                        />
+                    <li key={review.id}>
+                        <Review user={review.user} text={review.text} rating={review.rating} />
                     </li>
                 ))}
             </ul>
         )
+    );
 };
