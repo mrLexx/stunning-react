@@ -5,11 +5,9 @@ export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState({ auth: false });
 
     const toggleLogin = () => {
-        if (!user.auth) {
-            setUser({ auth: true, name: 'Super Puper' });
-        } else {
-            setUser({ auth: false });
-        }
+        setUser((prev) => {
+            return prev.auth ? { auth: false } : { auth: true, name: 'Super Puper' };
+        });
     }
 
     return (<AuthContext.Provider value={{ user, toggleLogin }}>
