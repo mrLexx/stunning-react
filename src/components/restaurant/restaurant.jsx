@@ -24,6 +24,15 @@ export const Restaurant = ({ id }) => {
                 <div className={styles.menu}>
                     <h4 className={styles.subTitle}>Menu</h4>
                     <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
+                    <Menu menu={menu} />
                 </div>
                 <div>
                     <h4 className={styles.subTitle}>Reviews</h4>
