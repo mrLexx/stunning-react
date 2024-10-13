@@ -1,8 +1,12 @@
 import { Rating } from "../rating/rating.jsx";
 import styles from "./review.module.css";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectReviewById } from "../../redux/reviews/index.js";
 
-export const Review = ({ user, text, rating }) => {
+export const Review = ({ id }) => {
+    const { user, text, rating } = useSelector((state) => selectReviewById(state, id));
+
     return (
         <div className={styles.review}>
             <div>
