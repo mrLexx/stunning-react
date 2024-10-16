@@ -3,6 +3,18 @@
 }
 
 .count {
+    display: inline-flex;
     margin-top: 5px;
-    margin-left: 20px;
+    margin-left: 10px;
+}
+
+.title {
+    text-align: center;
+
+}
+
+.block {
+    margin-bottom: 20px;
+    margin-left: 30%;
+    text-align: left;
 }

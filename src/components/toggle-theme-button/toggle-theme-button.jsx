@@ -1,8 +1,7 @@
 import { Button } from "../button/button.jsx";
 import { useTheme } from "../theme-context/use-theme.js";
-import styles from "./toggle-theme-button.module.css";
 
-export const ToggleThemeButton = () => {
+export const ToggleThemeButton = (props) => {
     const { toggleTheme } = useTheme();
-    return <Button text={"Toggle theme"} onClick={toggleTheme} className={styles.toggleButton} />;
+    return <Button {...props} text={"Toggle theme"} onClick={toggleTheme} />;
 };

@@ -4,7 +4,7 @@ export const Count = ({ count, increment, decrement, limitReached = false }) => 
     return (
         <>
             <Button onClick={decrement} text={" - "} size={"small"} />
-            {` ${count} `}
+            &nbsp;{count}&nbsp;
             <Button onClick={increment} text={" + "} disabled={limitReached} size={"small"} />
         </>
     );

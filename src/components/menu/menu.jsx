@@ -1,5 +1,5 @@
-import { Dish } from "../dish/dish.jsx";
 import styles from "./menu.module.css";
+import { MenuItemContainer } from "../menu-item/menu-item.container.jsx";
 
 export const Menu = ({ menu }) => {
     if (!menu) {
@@ -10,7 +10,7 @@ export const Menu = ({ menu }) => {
         <ul className={styles.menu}>
             {menu.map((dish) => (
                 <li key={dish} className={styles.dish}>
-                    <Dish id={dish} />
+                    <MenuItemContainer id={dish} />
                 </li>
             ))}
         </ul>

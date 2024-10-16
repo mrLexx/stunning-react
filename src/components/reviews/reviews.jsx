@@ -1,5 +1,5 @@
-import { Review } from "../review/review.jsx";
 import styles from "./reviews.module.css";
+import { ReviewContainer } from "../review/review.container.jsx";
 
 export const Reviews = ({ reviews }) => {
     if (!reviews.length) {
@@ -9,7 +9,7 @@ export const Reviews = ({ reviews }) => {
         <ul className={styles.reviews}>
             {reviews.map((id) => (
                 <li key={id}>
-                    <Review id={id} />
+                    <ReviewContainer id={id} />
                 </li>
             ))}
         </ul>

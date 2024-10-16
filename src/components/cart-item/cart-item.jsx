@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { selectDisheById } from "../../redux/dishes/index.js";
+import { selectDishById } from "../../redux/dishes/index.js";
 
 export const CartItem = ({ id, amount }) => {
-    const { name } = useSelector((state) => selectDisheById(state, id));
+    const { name } = useSelector((state) => selectDishById(state, id));
     return (
         <div>
             {name} - {amount}

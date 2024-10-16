@@ -1,5 +1,6 @@
 .cart{
     text-align: left;
+    padding-left: 0px;
 }
 .order{
     list-style: none;
