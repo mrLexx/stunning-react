@@ -12,8 +12,8 @@ export const Dish = ({ name, ingredients, price, amount, increment, decrement, m
         <>
             <Link to={-1}>Back</Link> <h2>{name} </h2>
             <ul>
-                {ingredients.map((v) => {
-                    return <li key={v}>{v}</li>;
+                {ingredients.map((item) => {
+                    return <li key={item}>{item}</li>;
                 })}
             </ul>
             <div>

@@ -2,8 +2,8 @@ import { useMatches } from "react-router-dom";
 import styles from "./breadcrumbs.module.css";
 
 export const Breadcrumbs = () => {
-    let matches = useMatches();
-    let crumbs = matches
+    const matches = useMatches();
+    const crumbs = matches
         // first get rid of any matches that don't have handle and crumb
         .filter((match) => Boolean(match.handle?.crumb))
         // now map them into an array of elements, passing the loader

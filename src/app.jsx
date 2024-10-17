@@ -17,7 +17,7 @@ import { RestaurantsTabsContainer } from "./components/restaurants-tabs/restaura
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout></Layout>,
+        element: <Layout />,
         errorElement: <ErrorPage />,
         handle: { crumb: () => <Link to="/">Home page</Link> },
         children: [
@@ -87,10 +87,6 @@ export const App = () => {
             <AuthContextProvider>
                 <ThemeContextProvider>
                     <RouterProvider router={router} />
-                    {/*    <Layout>*/}
-                    {/*        <RestaurantsPage />*/}
-                    {/*    </Layout>*/}
-                    {/*</RouterProvider>*/}
                 </ThemeContextProvider>
             </AuthContextProvider>
         </Provider>
