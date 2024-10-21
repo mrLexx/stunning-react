@@ -17,5 +17,15 @@ export const DishContainer = ({ id }) => {
         return null;
     }
     const { name, ingredients, price } = dish;
-    return <Dish name={name} ingredients={ingredients} price={price} amount={amount} decrement={decrement} increment={increment} max={max} />;
+    return (
+        <Dish
+            name={name}
+            ingredients={ingredients}
+            price={price}
+            amount={amount}
+            decrement={decrement}
+            increment={increment}
+            max={max}
+        />
+    );
 };
