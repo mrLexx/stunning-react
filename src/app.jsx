@@ -11,6 +11,7 @@ import { MenuPage } from "./components/menu-page/menu-page.jsx";
 import { ReviewsPage } from "./components/reviews-page/reviews-page.jsx";
 import { DishPage } from "./components/dish-page/dish-page.jsx";
 import { RestaurantsTabsContainer } from "./components/restaurants-tabs/restaurants-tabs.container.jsx";
+import { CurrentRestaurant } from "./components/current-restaurant/current-restaurant.jsx";
 
 // import { router } from "./components/router";
 
@@ -48,32 +49,31 @@ const router = createBrowserRouter([
                         </>
                     ),
                 },
+            },
+            {
+                path: "restaurants/:restaurantId",
+                element: <RestaurantPage />,
+                handle: {
+                    crumb: () => (
+                        <>
+                            {">"}
+                            <Link to="restaurants">Restaurants</Link>
+                            <CurrentRestaurant />
+                        </>
+                    ),
+                },
                 children: [
                     {
-                        path: ":restaurantId",
-                        element: <RestaurantPage />,
-                        handle: {
-                            crumb: () => (
-                                <>
-                                    {">"}
-                                    <span>Restaurant</span>
-                                </>
-                            ),
-                        },
-                        children: [
-                            {
-                                index: true,
-                                element: <MenuPage />,
-                            },
-                            {
-                                path: "menu",
-                                element: <MenuPage />,
-                            },
-                            {
-                                path: "reviews",
-                                element: <ReviewsPage />,
-                            },
-                        ],
+                        index: true,
+                        element: <MenuPage />,
+                    },
+                    {
+                        path: "menu",
+                        element: <MenuPage />,
+                    },
+                    {
+                        path: "reviews",
+                        element: <ReviewsPage />,
                     },
                 ],
             },

@@ -1,12 +1,9 @@
+import { Review } from "./review.jsx";
 import { useSelector } from "react-redux";
 import { selectReviewById } from "../../redux/reviews/index.js";
-import { Review } from "./review.jsx";
 
 export const ReviewContainer = ({ id }) => {
-    const review = useSelector((state) => selectReviewById(state, id));
-    if (!review) {
-        return null;
-    }
-    const { user, text, rating } = review;
-    return <Review user={user} text={text} rating={rating} />;
+    const { rating, text, userId } = useSelector((state) => selectReviewById(state, id));
+
+    return <Review userId={userId} text={text} rating={rating} />;
 };

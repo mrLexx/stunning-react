@@ -4,6 +4,7 @@ import { dishesSlice } from "./dishes/index.js";
 import { usersSlice } from "./users/index.js";
 import { reviewsSlice } from "./reviews/index.js";
 import { cartSlice } from "./ui/cart/index.js";
+import { currentRestaurantSlice } from "./current-restaurant/index.js";
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +13,8 @@ export const store = configureStore({
         [usersSlice.name]: usersSlice.reducer,
         [reviewsSlice.name]: reviewsSlice.reducer,
         [cartSlice.name]: cartSlice.reducer,
+        [currentRestaurantSlice.name]: currentRestaurantSlice.reducer,
+        [currentRestaurantSlice.name]: currentRestaurantSlice.reducer,
     },
+    middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(),
 });

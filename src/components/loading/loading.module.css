@@ -1,0 +1,14 @@
+.loading{
+    margin-bottom: 20px;
+}
+.loadingCenter {
+    text-align: center;
+}
+
+.loadingLeft {
+    text-align: left;
+}
+
+.loadingRight {
+    text-align: right;
+}

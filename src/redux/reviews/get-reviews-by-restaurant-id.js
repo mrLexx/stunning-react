@@ -1,0 +1,22 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectReviewsForRestaurant, selectReviewsIds } from "./index.js";
+
+export const getReviewsByRestaurantId = createAsyncThunk(
+    "reviews/getReviews",
+    // eslint-disable-next-line no-unused-vars
+    async (restaurantId, { dispatch, getState, rejectWithValue }) => {
+        const response = await fetch(`http://localhost:3001/api/reviews?restaurantId=${restaurantId}`);
+        const result = await response.json();
+
+        if (!result.length) {
+            rejectWithValue("no data");
+            return;
+        }
+        return result;
+    },
+    {
+        condition: (restaurantId, { getState }) => {
+            return selectReviewsIds(getState()).length === 0 || selectReviewsForRestaurant(getState()) !== restaurantId;
+        },
+    },
+);
