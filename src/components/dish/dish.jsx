@@ -7,7 +7,6 @@ export const Dish = ({ name, ingredients, price, amount, increment, decrement, m
     const { user } = useAuth();
 
     const limitReached = amount >= max;
-    console.log(window.history.length);
     return (
         <>
             {window.history.length > 1 && <Link to={-1}>Back</Link>} <h2>{name} </h2>

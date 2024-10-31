@@ -18,9 +18,7 @@ export const DishContainer = ({ id }) => {
     const decrement = () => dispatch(removeFromCart(id));
 
     useEffect(() => {
-        console.log(id);
         dispatch(getDishById(id));
-        return () => {};
     }, [dispatch, id]);
 
     if (requestStatus === "pending") {

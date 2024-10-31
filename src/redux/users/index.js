@@ -18,7 +18,6 @@ export const usersSlice = createSlice({
             })
             .addCase(getUsers.fulfilled, (state, { payload }) => {
                 state.requestStatus = "fulfilled";
-                console.log("fulfilled");
                 entityAdapter.setAll(state, payload);
             })
             .addCase(getUsers.rejected, (state) => {

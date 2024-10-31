@@ -13,8 +13,6 @@ export const RestaurantsTabsContainer = () => {
 
     useEffect(() => {
         dispatch(getRestaurants());
-
-        return () => {};
     }, [dispatch]);
 
     if (requestStatus === "pending") {

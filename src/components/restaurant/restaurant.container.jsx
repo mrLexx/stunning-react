@@ -13,7 +13,6 @@ export const RestaurantContainer = ({ id }) => {
 
     useEffect(() => {
         dispatch(getRestaurantById(id));
-        return () => {};
     }, [dispatch, id]);
 
     if (requestStatus === "pending") {
