@@ -6,23 +6,19 @@ const entityAdapter = createEntityAdapter();
 
 export const dishesSlice = createSlice({
     name: "dishes",
-    initialState: entityAdapter.getInitialState({ requestStatus: "idle", dishesForRestaurant: -1 }),
+    initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
     selectors: {
         selectDishes: (state) => state.entities,
-        selectDishesIds: (state) => state.ids,
         selectDishById: (state, id) => state.entities[id],
         selectDishesRequestStatus: (state) => state.requestStatus,
-        selectDishesForRestaurant: (state) => state.dishesForRestaurant,
     },
     extraReducers: (builder) =>
         builder
             .addCase(getDishesByRestaurantId.pending, (state) => {
                 state.requestStatus = "pending";
             })
-            .addCase(getDishesByRestaurantId.fulfilled, (state, { payload, meta }) => {
+            .addCase(getDishesByRestaurantId.fulfilled, (state, { payload }) => {
                 state.requestStatus = "fulfilled";
-
-                state.dishesForRestaurant = meta.arg;
                 entityAdapter.setAll(state, payload);
             })
             .addCase(getDishesByRestaurantId.rejected, (state) => {
@@ -41,5 +37,4 @@ export const dishesSlice = createSlice({
             }),
 });
 
-export const { selectDishes, selectDishesIds, selectDishById, selectDishesRequestStatus, selectDishesForRestaurant } =
-    dishesSlice.selectors;
+export const { selectDishes, selectDishById, selectDishesRequestStatus } = dishesSlice.selectors;
