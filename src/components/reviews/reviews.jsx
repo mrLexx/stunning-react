@@ -2,14 +2,11 @@ import styles from "./reviews.module.css";
 import { ReviewContainer } from "../review/review.container.jsx";
 
 export const Reviews = ({ reviews }) => {
-    if (!reviews.length) {
-        return null;
-    }
     return (
         <ul className={styles.reviews}>
-            {reviews.map((id) => (
-                <li key={id}>
-                    <ReviewContainer id={id} />
+            {Object.keys(reviews).map((id) => (
+                <li key={reviews[id].id}>
+                    <ReviewContainer id={reviews[id].id} />
                 </li>
             ))}
         </ul>

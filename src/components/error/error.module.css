@@ -1,0 +1,14 @@
+.error {
+    margin-bottom: 20px;
+}
+.errorCenter {
+    text-align: center;
+}
+
+.errorLeft {
+    text-align: left;
+}
+
+.errorRight {
+    text-align: right;
+}

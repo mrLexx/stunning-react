@@ -5,12 +5,11 @@ export const Menu = ({ menu }) => {
     if (!menu) {
         return null;
     }
-
     return (
         <ul className={styles.menu}>
-            {menu.map((dish) => (
+            {Object.keys(menu).map((dish) => (
                 <li key={dish} className={styles.dish}>
-                    <MenuItemContainer id={dish} />
+                    <MenuItemContainer id={dish} name={menu[dish].name} price={menu[dish].price} />
                 </li>
             ))}
         </ul>

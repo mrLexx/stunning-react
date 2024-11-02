@@ -1,9 +1,16 @@
 import styles from "./restaurant.module.css";
-import { Outlet, useResolvedPath } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { CustomLink } from "../custom-link/custom-link.jsx";
+import { useDispatch } from "react-redux";
+import { setCurrentName } from "../../redux/current-restaurant/index.js";
+import { useEffect } from "react";
 
 export const Restaurant = ({ name }) => {
-    const to = useResolvedPath(".");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setCurrentName(name));
+    }, [dispatch, name]);
 
     return (
         <>
