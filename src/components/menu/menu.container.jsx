@@ -16,10 +16,10 @@ export const MenuContainer = ({ id }) => {
     }, [dispatch, id]);
 
     if (requestStatus === "pending") {
-        return <Loading />;
+        return <Loading position={"left"} />;
     }
     if (requestStatus === "rejected") {
-        return <Error />;
+        return <Error position={"left"} />;
     }
 
     if (!menu) {

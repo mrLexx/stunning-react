@@ -7,7 +7,7 @@ export const MenuPage = () => {
 
     return (
         <>
-            <h4 className={styles.subTitle}>Menu</h4>
+            <h4 className={styles.title}>Menu</h4>
             <MenuContainer id={restaurantId} />
         </>
     );

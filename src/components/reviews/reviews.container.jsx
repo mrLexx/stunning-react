@@ -16,8 +16,11 @@ export const ReviewsContainer = ({ restaurantId }) => {
 
     useEffect(() => {
         dispatch(getReviewsByRestaurantId(restaurantId));
-        dispatch(getUsers());
     }, [dispatch, restaurantId]);
+
+    useEffect(() => {
+        dispatch(getUsers());
+    });
 
     if (requestStatus === "pending" || requestStatusUser === "pending") {
         return <Loading position={"left"} />;
