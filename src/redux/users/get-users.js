@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { selectUserRequestStatus, selectUsersIds } from "./index.js";
+import { selectUsersIds } from "./index.js";
 
 export const getUsers = createAsyncThunk(
     "users/getUsers",
@@ -16,7 +16,7 @@ export const getUsers = createAsyncThunk(
     },
     {
         condition: (_, { getState }) => {
-            return selectUsersIds(getState()).length === 0 && selectUserRequestStatus(getState()) === "idle";
+            return selectUsersIds(getState()).length === 0;
         },
     },
 );

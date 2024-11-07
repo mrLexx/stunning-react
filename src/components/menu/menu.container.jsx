@@ -1,19 +1,14 @@
 import { Menu } from "./menu.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { selectDishes, selectDishesRequestStatus } from "../../redux/dishes/index.js";
+import { selectDishes } from "../../redux/dishes/index.js";
 import { getDishesByRestaurantId } from "../../redux/dishes/get-dishes-by-restaurant-id.js";
+import { useRequest } from "../../redux/ui/request/use-request.js";
 
 export const MenuContainer = ({ id }) => {
-    const dispatch = useDispatch();
     const menu = useSelector(selectDishes);
-    const requestStatus = useSelector(selectDishesRequestStatus);
-
-    useEffect(() => {
-        dispatch(getDishesByRestaurantId(id));
-    }, [dispatch, id]);
+    const requestStatus = useRequest(getDishesByRestaurantId, id);
 
     if (requestStatus === "pending") {
         return <Loading position={"left"} />;

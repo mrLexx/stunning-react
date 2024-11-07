@@ -5,24 +5,15 @@ const entityAdapter = createEntityAdapter();
 
 export const usersSlice = createSlice({
     name: "users",
-    initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
+    initialState: entityAdapter.getInitialState(),
     selectors: {
         selectUsersIds: (state) => state.ids,
         selectUserById: (state, id) => state.entities[id],
-        selectUserRequestStatus: (state) => state.requestStatus,
     },
     extraReducers: (builder) =>
-        builder
-            .addCase(getUsers.pending, (state) => {
-                state.requestStatus = "pending";
-            })
-            .addCase(getUsers.fulfilled, (state, { payload }) => {
-                state.requestStatus = "fulfilled";
-                entityAdapter.setAll(state, payload);
-            })
-            .addCase(getUsers.rejected, (state) => {
-                state.requestStatus = "rejected";
-            }),
+        builder.addCase(getUsers.fulfilled, (state, { payload }) => {
+            entityAdapter.setAll(state, payload);
+        }),
 });
 
-export const { selectUsersIds, selectUserById, selectUserRequestStatus } = usersSlice.selectors;
+export const { selectUsersIds, selectUserById } = usersSlice.selectors;

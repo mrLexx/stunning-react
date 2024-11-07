@@ -13,8 +13,6 @@ import { DishPage } from "./components/dish-page/dish-page.jsx";
 import { RestaurantsTabsContainer } from "./components/restaurants-tabs/restaurants-tabs.container.jsx";
 import { CurrentRestaurant } from "./components/current-restaurant/current-restaurant.jsx";
 
-// import { router } from "./components/router";
-
 const router = createBrowserRouter([
     {
         path: "/",
