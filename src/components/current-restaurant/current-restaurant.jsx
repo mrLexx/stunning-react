@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getCurrentRestaurant } from "../../redux/current-restaurant/index.js";
+import { getCurrentRestaurant } from "../../redux/entities/current-restaurant/index.js";
 
 export const CurrentRestaurant = () => {
     const currentRestaurant = useSelector(getCurrentRestaurant);

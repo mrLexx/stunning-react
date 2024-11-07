@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectDishById } from "../../redux/dishes/index.js";
+import { selectDishById } from "../../redux/entities/dishes/index.js";
 import { Dish } from "./dish.jsx";
 import { addToCart, removeFromCart, selectAmountById } from "../../redux/ui/cart/index.js";
-import { getDishById } from "../../redux/dishes/get-dish-by-id.js";
+import { getDishById } from "../../redux/entities/dishes/get-dish-by-id.js";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
 import { useRequest } from "../../redux/ui/request/use-request.js";

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurants/index.js";
+import { selectRestaurantById } from "../../redux/entities/restaurants/index.js";
 import { Restaurant } from "./restaurant.jsx";
-import { getRestaurantById } from "../../redux/restaurants/get-restaurant-by-id.js";
+import { getRestaurantById } from "../../redux/entities/restaurants/get-restaurant-by-id.js";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
 import { useRequest } from "../../redux/ui/request/use-request.js";

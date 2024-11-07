@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurants/index.js";
+import { selectRestaurantById } from "../../redux/entities/restaurants/index.js";
 import { RestaurantsTabsItem } from "./restaurants-tabs-item.jsx";
 
 export const RestaurantsTabsItemContainer = ({ id }) => {

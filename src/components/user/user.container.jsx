@@ -1,4 +1,4 @@
-import { selectUserById } from "../../redux/users/index.js";
+import { selectUserById } from "../../redux/entities/users/index.js";
 import { User } from "./user.jsx";
 import { useSelector } from "react-redux";
 

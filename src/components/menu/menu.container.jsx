@@ -2,8 +2,8 @@ import { Menu } from "./menu.jsx";
 import { useSelector } from "react-redux";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { selectDishes } from "../../redux/dishes/index.js";
-import { getDishesByRestaurantId } from "../../redux/dishes/get-dishes-by-restaurant-id.js";
+import { selectDishes } from "../../redux/entities/dishes/index.js";
+import { getDishesByRestaurantId } from "../../redux/entities/dishes/get-dishes-by-restaurant-id.js";
 import { useRequest } from "../../redux/ui/request/use-request.js";
 
 export const MenuContainer = ({ id }) => {
