@@ -1,26 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectDishById } from "../../redux/entities/dishes/index.js";
 import { Dish } from "./dish.jsx";
 import { addToCart, removeFromCart, selectAmountById } from "../../redux/ui/cart/index.js";
-import { getDishById } from "../../redux/entities/dishes/get-dish-by-id.js";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { useRequest } from "../../redux/ui/request/use-request.js";
+import { useGetDishByIdQuery } from "../../redux/services/api/api.js";
 
 const max = 7;
 
 export const DishContainer = ({ id }) => {
-    const dish = useSelector((state) => selectDishById(state, id));
-    const requestStatus = useRequest(getDishById, id);
+    const result = useGetDishByIdQuery(id);
+    const { isFetching, data: dish, isError } = result;
+
     const amount = useSelector((state) => selectAmountById(state, id));
     const dispatch = useDispatch();
     const increment = () => dispatch(addToCart(id));
     const decrement = () => dispatch(removeFromCart(id));
 
-    if (requestStatus === "pending") {
+    if (isFetching) {
         return <Loading position={"left"} />;
     }
-    if (requestStatus === "rejected") {
+    if (isError) {
         return <Error position={"left"} />;
     }
     if (!dish) {

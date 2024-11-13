@@ -1,23 +1,20 @@
 import { Menu } from "./menu.jsx";
-import { useSelector } from "react-redux";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { selectDishes } from "../../redux/entities/dishes/index.js";
-import { getDishesByRestaurantId } from "../../redux/entities/dishes/get-dishes-by-restaurant-id.js";
-import { useRequest } from "../../redux/ui/request/use-request.js";
+import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api.js";
 
-export const MenuContainer = ({ id }) => {
-    const menu = useSelector(selectDishes);
-    const requestStatus = useRequest(getDishesByRestaurantId, id);
+export const MenuContainer = ({ restaurantId }) => {
+    const result = useGetDishesByRestaurantIdQuery(restaurantId);
+    const { isFetching, data: menu, isError } = result;
 
-    if (requestStatus === "pending") {
+    if (isFetching) {
         return <Loading position={"left"} />;
     }
-    if (requestStatus === "rejected") {
+    if (isError) {
         return <Error position={"left"} />;
     }
 
-    if (!menu) {
+    if (!menu?.length) {
         return null;
     }
 

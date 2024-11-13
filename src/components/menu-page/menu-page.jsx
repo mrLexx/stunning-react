@@ -8,7 +8,7 @@ export const MenuPage = () => {
     return (
         <>
             <h4 className={styles.title}>Menu</h4>
-            <MenuContainer id={restaurantId} />
+            <MenuContainer restaurantId={restaurantId} />
         </>
     );
 };

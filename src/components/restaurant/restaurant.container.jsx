@@ -1,19 +1,16 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/index.js";
 import { Restaurant } from "./restaurant.jsx";
-import { getRestaurantById } from "../../redux/entities/restaurants/get-restaurant-by-id.js";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { useRequest } from "../../redux/ui/request/use-request.js";
+import { useGetRestaurantByIdQuery } from "../../redux/services/api/api.js";
 
 export const RestaurantContainer = ({ id }) => {
-    const restaurant = useSelector((state) => selectRestaurantById(state, id));
-    const requestStatus = useRequest(getRestaurantById, id);
+    const result = useGetRestaurantByIdQuery(id);
+    const { isFetching, data: restaurant, isError } = result;
 
-    if (requestStatus === "pending") {
+    if (isFetching) {
         return <Loading />;
     }
-    if (requestStatus === "rejected") {
+    if (isError) {
         return <Error />;
     }
 
@@ -21,5 +18,6 @@ export const RestaurantContainer = ({ id }) => {
         return null;
     }
     const { name, menu, reviews } = restaurant;
+
     return <Restaurant name={name} menu={menu} reviews={reviews} />;
 };

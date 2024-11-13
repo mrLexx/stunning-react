@@ -1,23 +1,28 @@
-import { useSelector } from "react-redux";
 import { Reviews } from "./reviews.jsx";
-import { getReviewsByRestaurantId } from "../../redux/entities/reviews/get-reviews-by-restaurant-id.js";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { selectReviews } from "../../redux/entities/reviews/index.js";
-import { getUsers } from "../../redux/entities/users/get-users.js";
-import { useRequest } from "../../redux/ui/request/use-request.js";
+import { useGetReviewsByRestaurantIdQuery, useGetUsersQuery } from "../../redux/services/api/api.js";
+import { useEffect } from "react";
 
-export const ReviewsContainer = ({ restaurantId }) => {
-    const requestStatus = useRequest(getReviewsByRestaurantId, restaurantId);
-    const requestStatusUser = useRequest(getUsers);
-    const reviews = useSelector(selectReviews);
+export const ReviewsContainer = ({ restaurantId, setIsFetchingReviews, setReviewId }) => {
+    const {
+        isFetching: isFetchingReviews,
+        data: reviews,
+        isError: isErrorReviews,
+    } = useGetReviewsByRestaurantIdQuery(restaurantId);
 
-    if (requestStatus === "pending" || requestStatusUser === "pending") {
+    const { isFetching: isFetchingUsers, isError: isErrorUsers } = useGetUsersQuery();
+
+    useEffect(() => {
+        setIsFetchingReviews(isFetchingReviews);
+    }, [isFetchingReviews, setIsFetchingReviews]);
+
+    if (isFetchingReviews || isFetchingUsers) {
         return <Loading position={"left"} />;
     }
-    if (requestStatus === "rejected" || requestStatusUser === "rejected") {
+    if (isErrorReviews || isErrorUsers) {
         return <Error position={"left"} />;
     }
 
-    return <Reviews reviews={reviews} />;
+    return <Reviews reviews={reviews} setReviewId={setReviewId} />;
 };

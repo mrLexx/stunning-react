@@ -1,19 +1,16 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../redux/entities/restaurants/index.js";
 import { RestaurantsTabs } from "./restaurants-tabs.jsx";
-import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants.js";
 import { Loading } from "../loading/loading.jsx";
 import { Error } from "../error/error.jsx";
-import { useRequest } from "../../redux/ui/request/use-request.js";
+import { useGetRestaurantsQuery } from "../../redux/services/api/api.js";
 
 export const RestaurantsTabsContainer = () => {
-    const restaurants = useSelector(selectRestaurantsIds);
-    const requestStatus = useRequest(getRestaurants);
+    const result = useGetRestaurantsQuery(undefined);
+    const { isFetching, data: restaurants, isError } = result;
 
-    if (requestStatus === "pending") {
+    if (isFetching) {
         return <Loading />;
     }
-    if (requestStatus === "rejected") {
+    if (isError) {
         return <Error />;
     }
 

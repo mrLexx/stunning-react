@@ -1,17 +1,8 @@
 import styles from "./restaurant.module.css";
 import { Outlet } from "react-router-dom";
 import { CustomLink } from "../custom-link/custom-link.jsx";
-import { useDispatch } from "react-redux";
-import { setCurrentName } from "../../redux/entities/current-restaurant/index.js";
-import { useEffect } from "react";
 
 export const Restaurant = ({ name }) => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(setCurrentName(name));
-    }, [dispatch, name]);
-
     return (
         <>
             <div className={styles.title}>

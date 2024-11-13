@@ -1,4 +1,14 @@
+.review {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.section {
+    padding: 7px;
+    margin: 1px;
+}
+
 .title {
     margin-left: 50px;
     text-align: left;
 }
+

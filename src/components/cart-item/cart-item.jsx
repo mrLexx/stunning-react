@@ -1,8 +1,22 @@
-import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/entities/dishes/index.js";
+import { useGetDishByIdQuery } from "../../redux/services/api/api.js";
+import { Loading } from "../loading/loading.jsx";
+import { Error } from "../error/error.jsx";
 
 export const CartItem = ({ id, amount }) => {
-    const { name } = useSelector((state) => selectDishById(state, id));
+    const { isFetching, data: dish, isError } = useGetDishByIdQuery(id);
+
+    if (isFetching) {
+        return <Loading position={"left"} />;
+    }
+    if (isError) {
+        return <Error position={"left"} />;
+    }
+    if (!dish) {
+        return null;
+    }
+
+    const { name } = dish || {};
+
     return (
         <div>
             {name} - {amount}

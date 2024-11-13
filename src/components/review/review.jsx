@@ -2,8 +2,11 @@ import { Rating } from "../rating/rating.jsx";
 import styles from "./review.module.css";
 import classNames from "classnames";
 import { UserContainer } from "../user/user.container.jsx";
+import { Button } from "../button/button.jsx";
+import { useAuth } from "../auth-context/use-auth.js";
 
-export const Review = ({ userId, text, rating }) => {
+export const Review = ({ id, userId, text, rating, setReviewId }) => {
+    const { user } = useAuth();
     return (
         <div className={styles.review}>
             <div>
@@ -22,6 +25,7 @@ export const Review = ({ userId, text, rating }) => {
                 </span>
             </div>
             <div className={styles.text}>{text}</div>
+            {user.auth && <Button text={"Edit"} size={"small"} onClick={() => setReviewId(id)} />}
         </div>
     );
 };
