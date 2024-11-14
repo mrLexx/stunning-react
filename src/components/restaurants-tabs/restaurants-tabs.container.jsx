@@ -4,7 +4,7 @@ import { Error } from "../error/error.jsx";
 import { useGetRestaurantsQuery } from "../../redux/services/api/api.js";
 
 export const RestaurantsTabsContainer = () => {
-    const result = useGetRestaurantsQuery(undefined);
+    const result = useGetRestaurantsQuery();
     const { isFetching, data: restaurants, isError } = result;
 
     if (isFetching) {

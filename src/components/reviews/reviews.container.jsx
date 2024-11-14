@@ -4,7 +4,7 @@ import { Error } from "../error/error.jsx";
 import { useGetReviewsByRestaurantIdQuery, useGetUsersQuery } from "../../redux/services/api/api.js";
 import { useEffect } from "react";
 
-export const ReviewsContainer = ({ restaurantId, setIsFetchingReviews, setReviewId }) => {
+export const ReviewsContainer = ({ restaurantId, setIsFetchingReviews }) => {
     const {
         isFetching: isFetchingReviews,
         data: reviews,
@@ -24,5 +24,5 @@ export const ReviewsContainer = ({ restaurantId, setIsFetchingReviews, setReview
         return <Error position={"left"} />;
     }
 
-    return <Reviews reviews={reviews} setReviewId={setReviewId} />;
+    return <Reviews reviews={reviews} />;
 };

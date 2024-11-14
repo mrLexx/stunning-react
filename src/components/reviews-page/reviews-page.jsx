@@ -4,12 +4,12 @@ import { ReviewsContainer } from "../reviews/reviews.container.jsx";
 import styles from "./reviews-page.module.css";
 import { useState } from "react";
 import { useAuth } from "../auth-context/use-auth.js";
+import { ToggleAuthButton } from "../toggle-auth-button/toggle-auth-button.jsx";
 
 export const ReviewsPage = () => {
     const { restaurantId } = useParams();
 
     const [isFetchingReviews, setIsFetchingReviews] = useState(false);
-    const [reviewId, setReviewId] = useState("-1");
 
     const { user } = useAuth();
 
@@ -17,25 +17,20 @@ export const ReviewsPage = () => {
         <div className={styles.review}>
             <div className={styles.section}>
                 <h4 className={styles.title}>Reviews</h4>
-                <ReviewsContainer
-                    restaurantId={restaurantId}
-                    setIsFetchingReviews={setIsFetchingReviews}
-                    setReviewId={setReviewId}
-                />
+                <ReviewsContainer restaurantId={restaurantId} setIsFetchingReviews={setIsFetchingReviews} />
             </div>
             <div className={styles.section}>
-                {
+                <h4 className={styles.title}>Add review</h4>
+                {!user?.auth ? (
+                    <ToggleAuthButton className={styles.toggleButton} />
+                ) : (
                     <ReviewForm
-                        key={user.auth ? reviewId : "none_auth"}
+                        key={"new_" + user.id}
                         nameReview={user.name}
                         restaurantId={restaurantId}
                         isFetchingReviews={isFetchingReviews}
-                        reviewId={reviewId}
-                        switchToAdd={() => {
-                            setReviewId("-1");
-                        }}
                     />
-                }
+                )}
             </div>
         </div>
     );

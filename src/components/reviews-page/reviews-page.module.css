@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
+
 .section {
     padding: 7px;
     margin: 1px;
@@ -12,3 +13,7 @@
     text-align: left;
 }
 
+.toggleButton {
+    margin-bottom: 20px;
+    margin-right: 10px;
+}

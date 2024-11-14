@@ -2,51 +2,22 @@ import { useReviewForms } from "./use-review-forms.js";
 import { Count } from "../count/count.jsx";
 import { Button } from "../button/button.jsx";
 import styles from "./review-form.module.css";
-import { ToggleAuthButton } from "../toggle-auth-button/toggle-auth-button.jsx";
-import {
-    useAddReviewMutation,
-    useEditReviewMutation,
-    useGetReviewsByRestaurantIdQuery,
-} from "../../redux/services/api/api.js";
+import { useAddReviewMutation, useEditReviewMutation } from "../../redux/services/api/api.js";
 import { useId } from "react";
 import { useAuth } from "../auth-context/use-auth.js";
-import { useName } from "./use-name.js";
 
-export const ReviewForm = ({ restaurantId, reviewId, isFetchingReviews, switchToAdd }) => {
+export const ReviewForm = ({ restaurantId, reviewData, isFetchingReviews, handleCloseForm }) => {
     const { user } = useAuth();
     const htmlReviewId = useId();
 
     const [addReview, { isLoading: isAdding }] = useAddReviewMutation();
     const [editReview, { isLoading: isEditing }] = useEditReviewMutation();
 
-    const initialReviewState = {
+    const { name, review, rating, setReview, ratingIncrement, ratingDecrement, clearForm } = useReviewForms({
         name: user.name,
-        review: "",
-        rating: 1,
-    };
-    const initialReviewFunc = (data) => {
-        const { name, review, rating } = data ?? {};
-        return {
-            name: name,
-            review: review,
-            rating: rating >= 1 && rating <= 5 ? rating : 1,
-        };
-    };
-
-    const { reviewData } = useGetReviewsByRestaurantIdQuery(restaurantId, {
-        selectFromResult: ({ data }) => ({
-            reviewData: data?.find((review) => review.id === reviewId),
-        }),
+        review: reviewData?.text ?? "",
+        rating: reviewData?.rating ?? 1,
     });
-
-    initialReviewState["name"] = useName(reviewData?.userId ?? user.id);
-    initialReviewState["review"] = reviewData?.text ?? "";
-    initialReviewState["rating"] = reviewData?.rating ?? 0;
-
-    const { name, review, rating, setReview, ratingIncrement, ratingDecrement, clearForm } = useReviewForms(
-        initialReviewState,
-        initialReviewFunc,
-    );
 
     const handleSubmit = () => {
         if (!reviewData) {
@@ -63,28 +34,16 @@ export const ReviewForm = ({ restaurantId, reviewId, isFetchingReviews, switchTo
             editReview({
                 reviewId: reviewData.id,
                 review: {
-                    userId: reviewData.userId,
+                    userId: user.id,
                     text: review,
                     rating,
                 },
             });
-            switchToAdd();
-            clearForm();
         }
     };
 
-    if (!user?.auth) {
-        return (
-            <>
-                <h4 className={styles.title}>Add review</h4>
-                <ToggleAuthButton className={styles.toggleButton} />
-            </>
-        );
-    }
-
     return (
-        <form>
-            <h4 className={styles.title}>{!reviewData ? "Add review" : "Edit review"}</h4>
+        <form className={styles.reviewForm}>
             <div>
                 <label className={styles.label}>Name</label>
                 {name}
@@ -125,7 +84,7 @@ export const ReviewForm = ({ restaurantId, reviewId, isFetchingReviews, switchTo
                     }}
                     size={"small"}
                 />
-                {reviewData && <Button onClick={switchToAdd} text={"Switch to Add"} size={"small"} />}
+                {handleCloseForm && <Button onClick={handleCloseForm} text={"Close Form"} size={"small"} />}
             </div>
         </form>
     );
