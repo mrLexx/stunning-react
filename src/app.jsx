@@ -1,3 +1,5 @@
+"use client";
+
 import { Layout } from "./components/layout/layout.jsx";
 import { ThemeContextProvider } from "./components/theme-context/theme-context-provider.jsx";
 import { AuthContextProvider } from "./components/auth-context/auth-context-provider.jsx";
@@ -90,3 +92,5 @@ export const App = () => {
         </Provider>
     );
 };
+
+export default App;

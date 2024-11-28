@@ -4,6 +4,7 @@ export const apiSlice = createApi({
     reducerPath: "api",
     keepUnusedDataFor: 15,
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api" }),
+    tagTypes: ["Reviews"],
     endpoints: (builder) => ({
         getRestaurants: builder.query({ query: () => "/restaurants" }),
         getRestaurantById: builder.query({
